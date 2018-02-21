@@ -1,0 +1,12 @@
+title: Category
+files: false
+pages: false
+options:
+  url: false
+fields:
+  prevnext: prevnext
+  autoid:
+    type: hidden
+  title:
+    label: Title
+    type:  text

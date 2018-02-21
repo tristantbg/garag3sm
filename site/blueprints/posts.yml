@@ -1,0 +1,19 @@
+title: Posts
+files: false
+pages:
+  template:
+    - post
+    - product
+deletable: false
+fields:
+  title:
+    label: Title
+    type:  text
+  pageindex:
+    label: Posts
+    type: index
+    options: children
+    columns:
+      title: Title
+      category: Category
+      uid: Slug

@@ -1,0 +1,35 @@
+#page-content
+	span(1)
+	margin-bottom ($font-heading+$font*2)
+	.align-left
+		span(9/12)
+		+below($md)
+			stack()
+
+#page-header
+	text-align center
+	margin ($font-heading+$font*2) 0
+	#post-date
+		margin-bottom 1em
+
+#page-text
+	text-align center
+	a
+		text-transform uppercase
+		text-decoration underline
+		text-decoration-skip ink
+	h2
+		serif()
+		margin-bottom .2em
+	h3
+		serif()
+		font-size $font
+		margin-bottom $font-lead
+		a
+			sans-serif()
+			text-transform none
+	p + h3
+		margin-top (-1 * $font-lead + $font)
+	a + br + a
+		display block
+		margin-top .3em

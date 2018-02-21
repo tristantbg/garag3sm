@@ -1,0 +1,33 @@
+header
+	hideselect()
+	position sticky
+	position -webkit-sticky
+	top 0
+	left 0
+	width 100%
+	border-bottom 1px solid
+	display grid
+	grid-template-columns 1fr
+	align-items center
+	background var(--bg-color)
+	z-index 200
+	h1
+		display none
+	#site-title
+		height ($font*4)
+		padding $padding 0
+		justify-self center
+		svg
+			display block
+			height 100%
+			width auto
+			path
+				fill currentColor
+	#previous-post
+		justify-self start
+	#next-post
+		justify-self end
+
+[page-type="post"], [page-type="product"]
+	header
+		grid-template-columns 1fr 1fr 1fr

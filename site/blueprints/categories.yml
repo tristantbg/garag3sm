@@ -1,0 +1,11 @@
+title: Categories
+files: false
+pages:
+  template: category
+deletable: false
+options:
+  url: false
+fields:
+  title:
+    label: Title
+    type:  text

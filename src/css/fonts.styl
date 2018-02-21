@@ -1,0 +1,78 @@
+webfont("Sanzettica", "SanzetticaHeavyExpd")
+webfont("ApercuRegular", "ApercuRegular")
+webfont("ApercuBold", "ApercuBold")
+webfont("GeorgiaRegular", "Georgia")
+
+$font = 1.8rem
+$font-heading = 7rem
+$font-lead = 4.2rem
+$font-reading = 2.4rem
+
+html
+	font-size 9px
+
+body
+	font-size $font
+
+heading()
+	font-family "Sanzettica", sans-serif
+	
+serif()
+	font-family Georgia, "GeorgiaRegular", serif
+	letter-spacing -0.01em
+
+sans-serif()
+	font-family "ApercuRegular", Helvetica, sans-serif
+	line-height 1.25
+	letter-spacing -0.01em
+	p
+		line-height 1.3
+	strong
+		font-family "ApercuBold", Helvetica, sans-serif
+
+link()
+	serif()
+	font-size 2.8rem
+	padding-left ($font-reading*3)
+
+.serif
+	serif()
+
+.sans-serif
+	sans-serif()
+
+
+.title, .heading, .lead, .bold
+	heading()
+
+.title, .heading
+	font-size $font-heading
+
+.text, .post-text
+	font-size $font-reading
+	sans-serif()
+	p
+		text-indent 3em
+
+.lead
+	font-size $font-lead
+
+.caption
+	font-size 1.6rem
+
+.tiny
+	font-size 1.2rem
+
+.upper
+	text-transform uppercase
+
+.lh-normal
+	line-height 1
+	p
+		line-height 1
+
+.ls-small
+	letter-spacing -0.01em
+
+.ls-narrow
+	letter-spacing -0.03em

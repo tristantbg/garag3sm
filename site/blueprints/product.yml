@@ -1,0 +1,191 @@
+title: Product
+files: true
+pages: false
+files:
+  fields:
+    caption:
+      label: Caption
+      type: textarea
+      buttons:
+        - link
+        - email
+    contentsize:
+      label: Size
+      type: radio
+      default: fullscreen
+      options:
+        contain: Contain
+        fullscreen: Fullscreen
+      columns: 2
+    videolink:
+      label: Video ID
+      type: text
+      icon: code
+      help: Youtube ID or Vimeo ID
+    vendor:
+      label: Vendor
+      type: radio
+      default: vimeo
+      options:
+        vimeo: Vimeo 
+        youtube: Youtube
+    videostream:
+      label: Video external stream link (.m3u8)
+      type: url
+    videoexternal:
+      label: Video external file link
+      type: url
+    videofile:
+      label: Video File (.MP4)
+      type: select
+      options: videos
+    videofilewebm:
+      label: Video File (.WEBM)
+      type: select
+      options: videos
+fields:
+  reveal: reveal
+  prevnext: prevnext
+  autoid:
+    type: hidden
+  headInfos:
+    label: Main infos
+    type: tabs
+  videoToggle:
+    label: Type
+    type: fieldtoggle
+    required: true
+    options:
+      yes: "Video"
+      no: "Normal"
+    show:
+      yes: author
+      no: subtitle
+    hide:
+      yes: subtitle
+      no: author
+  title:
+    label: Title
+    type:  text
+    width: 1/2
+  subtitle:
+    label: Subtitle
+    type: text
+    width: 1/2
+  author:
+    label: Author
+    type: text
+    width: 1/2
+  featured:
+    label: Featured image
+    type: quickselect
+    options: images
+    help: Required to display project
+    width: 1/2
+  date:
+    label: Year
+    type: datetime
+    required: true
+    date:
+      format: DD/MM/YYYY
+    time:
+      format: 24
+      interval: 5
+    width: 1/2
+  category:
+    label: Category
+    type: radio
+    options: query
+    query:
+      page: categories
+      fetch: visibleChildren
+      text: "{{title}}"
+      value: "{{uid}}"
+    required: true
+  text:
+    label: Description
+    type: simplemde
+  caption:
+    label: Caption
+    type: simplemde
+  additionalCaptions:
+    label: Additional Captions
+    type: structure
+    style: table
+    fields:
+      title:
+        label: Title
+        type: text
+      text:
+        label: Text
+        type: text
+  headHero:
+    label: Hero
+    type: tabs
+  heroVideoToggle:
+    label: Type
+    type: fieldtoggle
+    options:
+      yes: "Video"
+      no: "Slider"
+    show:
+      yes: heroVideoUrl heroVideoThumbnail
+      no: heroImages
+    hide:
+      yes: heroImages
+      no: heroVideoUrl heroVideoThumbnail
+  heroVideoUrl:
+    label: Video URL
+    type: url
+    width: 1/2
+  heroVideoThumbnail:
+    label: Video Thumbnail
+    type: quickselect
+    options: images
+    help: Optional
+    width: 1/2
+  heroImages: 
+    label: Hero Images
+    type: images
+  headContent:
+    label: Content
+    type: tabs
+  sections:
+    type: engineer
+    fieldsets:
+      text:
+        label: Text
+        fields:
+          first:
+            label: Text
+            type: textarea
+      images:
+        label: Images
+        fields:
+          first:
+            type: images
+      interview:
+        label: Interview
+        fields:
+          first:
+            label: Text
+            type: textarea
+      quote:
+        label: Quote
+        fields:
+          first:
+            label: Text
+            type: textarea
+            required: true
+          caption:
+            label: Caption
+            type: textarea
+      embed:
+        label: Embed
+        fields:
+          first:
+            label: URL
+            type: url
+          second:
+            label: Caption
+            type: textarea
