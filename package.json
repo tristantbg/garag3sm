@@ -21,6 +21,7 @@
     "grunt-contrib-watch": "*",
     "grunt-php": "*",
     "jeet": "*",
+    "modernizr-webpack-plugin": "^1.0.6",
     "rupture": "^0.7.1",
     "stylus": "^0.54.5",
     "uglifyjs-webpack-plugin": "^1.1.8",
