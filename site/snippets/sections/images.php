@@ -10,11 +10,21 @@
 	?>
 	<section class="post-section section--image row contained">
 		<div class="section--image--content <?= $image->orientation() ?>">
-			<img class="lazy lazyload" data-src="<?= $image->thumb(c::get('thumbs-slider'))->url() ?>" alt="<?= $caption ?>" width="100%" />
-			<div class="ph" style="padding-bottom: <?= 100 / $image->ratio() ?>%"></div>
+			<?php 
+			$srcset = '';
+			$src = $image->width(1000)->url();
+			for ($i = 1000; $i <= 3000; $i += 500) $srcset .= $image->width($i)->url() . ' ' . $i . 'w,';
+			?>
+			<img class="lazy lazyload" 
+			data-src="<?= $src ?>" 
+			data-srcset="<?= $srcset ?>" 
+			data-sizes="auto" 
+			data-optimumx="1.5" 
+			alt="<?= $title.' - © '.$site->title()->html() ?>" height="100%" width="auto" />
 			<noscript>
-				<img src="<?= $image->thumb(c::get('thumbs-slider'))->url() ?>" alt="<?= $caption ?>" width="100%" />
+				<img src="<?= $src ?>" alt="<?= $title.' - © '.$site->title()->html() ?>" width="100%" height="auto" />
 			</noscript>
+			<div class="ph" style="padding-bottom: <?= 100 / $image->ratio() ?>%"></div>
 		</div>
 		<?php if ($image->caption()->isNotEmpty()): ?>
 			<div class="caption sans-serif lh-normal"><?= $image->caption()->kt() ?></div>

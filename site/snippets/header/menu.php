@@ -6,12 +6,14 @@
 	</div>
 	<div id="menu--la-time">
 		<div>
+			<div class="tiny bold upper">Los Angeles</div>
 			<div class="time lead serif"></div>
 			<div class="time-convention tiny bold upper"></div>
 		</div>
 	</div>
 	<div id="menu--fr-time">
 		<div>
+			<div class="tiny bold upper">Paris</div>
 			<div class="time lead serif"></div>
 			<div class="time-convention tiny bold upper"></div>
 		</div>

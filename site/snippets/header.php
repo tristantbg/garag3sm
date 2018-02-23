@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" class="<?php e($page->isHomepage() || $page->template() == "default", 'dark ') ?>no-js">
+<html lang="en" class="<?php e($page->isHomepage() || in_array($page->template(), ["default", "category"]), 'dark ') ?>no-js">
 <head>
 
 	<meta charset="UTF-8" />
@@ -57,7 +57,7 @@
 
 	<?php 
 	echo css('assets/css/build/build.min.css');
-	echo js('assets/js/vendor/modernizr.min.js');
+	echo js('assets/js/build/vendor/modernizr-bundle.js');
 	?>
 
 	<?php if(!$site->customcss()->empty()): ?>

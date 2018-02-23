@@ -52,12 +52,12 @@ fields:
     label: Main infos
     type: tabs
   videoToggle:
-    label: Type
+    label: Post title
     type: fieldtoggle
     required: true
     options:
-      yes: "Video"
-      no: "Normal"
+      yes: "Director mode"
+      no: "Normal mode"
     show:
       yes: author
       no: subtitle
@@ -73,7 +73,7 @@ fields:
     type: text
     width: 1/2
   author:
-    label: Author
+    label: By
     type: text
     width: 1/2
   featured:

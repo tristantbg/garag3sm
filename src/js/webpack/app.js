@@ -10,6 +10,7 @@ const App = {
   $container: null,
   header: null,
   siteTitle: null,
+  boardSlider: null,
   initialize: () => {
     // App.$body = $('body');
     // App.smoothState('#main');
@@ -20,7 +21,7 @@ const App = {
     setTimeout(function() {
       document.getElementById("loader").style.display = "none"
     }, 300);
-    
+
   },
   interact: {
     init: () => {
@@ -33,17 +34,20 @@ const App = {
       App.interact.postStickyPosition()
     },
     eventTargets: () => {
+      App.header.addEventListener('mouseenter', function() {
+        App.boardSlider.next()
+      });
       App.siteTitle.addEventListener('mouseenter', App.interact.menuOn);
       App.siteTitle.addEventListener('mouseleave', App.interact.menuOff);
       App.menu.addEventListener('mouseenter', App.interact.menuOn);
       App.menu.addEventListener('mouseleave', App.interact.menuOff);
     },
     menuOn: (e) => {
-        App.menu.classList.add("is-visible")
-      },
+      App.menu.classList.add("is-visible")
+    },
     menuOff: (e) => {
-        App.menu.classList.remove("is-visible")
-      },
+      App.menu.classList.remove("is-visible")
+    },
     linkTargets: () => {
       document.querySelectorAll("a").forEach(function(element, index) {
         if (element.host !== window.location.host) {
@@ -62,19 +66,19 @@ const App = {
       for (var d = document.getElementsByClassName("embed__thumb"), t = 0; t < d.length; t++) d[t].addEventListener("click", pluginEmbedLoadLazyVideo, !1)
     },
     postStickyPosition: () => {
-      let postHeader = document.getElementById("post-description")
+      let postHeader = document.querySelector("#post-header h1")
       let stickyPost = document.getElementById("post-sticky")
       if (!postHeader || !stickyPost) return;
 
       function checkPostPosition() {
-        if (postHeader.offsetTop + postHeader.clientHeight < window.scrollY) {
+        if (postHeader.offsetTop + postHeader.clientHeight - App.header.clientHeight < window.scrollY) {
           if (!stickyPost.classList.contains('is-visible')) stickyPost.classList.add('is-visible')
         } else {
           if (stickyPost.classList.contains('is-visible')) stickyPost.classList.remove('is-visible')
         }
       }
 
-      window.addEventListener('scroll', throttle(checkPostPosition, 64), false);
+      window.addEventListener('scroll', throttle(checkPostPosition, 128), false);
     },
     loadSliders: () => {
       const initFlickity = (element) => {
@@ -100,7 +104,12 @@ const App = {
             this.element.parentNode.querySelector(".caption").innerHTML = this.selectedElement.getAttribute("data-caption");
           }
           var adjCellElems = this.getAdjacentCellElements(1);
-          $(adjCellElems).find('.lazy:not(".lazyloaded")').addClass('lazyload');
+          for (var i = 0; i < adjCellElems.length; i++) {
+            var adjCellImgs = adjCellElems[i].querySelectorAll('.lazy:not(.lazyloaded):not(.lazyload)')
+            for (var j = 0; j < adjCellImgs.length; j++) {
+              adjCellImgs[j].classList.add('lazyload')
+            }
+          }
         });
         slider.on('staticClick', function(event, pointer, cellElement, cellIndex) {
           if (!cellElement || cellElement.getAttribute('data-media') == "video" && !slider.element.classList.contains('nav-hover')) {
@@ -124,7 +133,7 @@ const App = {
     loadBoard: () => {
       var board = document.getElementById("menu--board");
       const initBoard = (element) => {
-        var slider = new Flickity(board, {
+        App.boardSlider = new Flickity(board, {
           cellSelector: '.slide',
           accessibility: false,
           setGallerySize: false,
@@ -132,12 +141,12 @@ const App = {
           prevNextButtons: false,
           pageDots: false,
           draggable: false,
-          autoPlay: 4000
+        // autoPlay: 4000
         });
       }
       initBoard(board);
     },
-    timeClock: ()=> {
+    timeClock: () => {
       const timeLa = document.querySelector("#menu--la-time .time");
       const timeLaConvention = document.querySelector("#menu--la-time .time-convention");
 
