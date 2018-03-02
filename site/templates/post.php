@@ -2,7 +2,7 @@
 
 <div id="post-header" class="row contained">
 	<div id="post-date"><?= $date.' — ' ?><a href="<?= $category->url() ?>" data-target><?= $category->title() ?></a></div>
-	<h1 class="title ls-narrow"><?= $title ?></h1>
+	<h1 class="title ls-narrow upper"><?= $title ?></h1>
 </div>
 
 <?php snippet('hero') ?>

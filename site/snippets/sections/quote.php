@@ -1,4 +1,4 @@
-<section class="post-section section--quote row contained">
+<section class="post-section section--quote row narrow contained">
 	<div class="lead">	
 		<?= $data->get("first")->kt() ?>
 	</div>

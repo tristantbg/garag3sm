@@ -10,15 +10,9 @@
 	color rgba(255,255,255,0.99)
 	background rgba(0,0,0,0.99)
 
-body,html
-	width 100%
-	-webkit-text-size-adjust 100%
-	background $primary
-
 html
 	--bg-color $primary
 	--font-color $secondary
-	background var(--bg-color)
 	&.dark
 		--bg-color $secondary
 		--font-color $primary
@@ -29,9 +23,16 @@ html
 			background rgba(255,255,255,0.99)
 			color rgba(0,0,0,0.99)
 
+body,html
+	width 100%
+	-webkit-text-size-adjust 100%
+	background $primary
+	background var(--bg-color)
+
 body
 	text-rendering optimizeLegibility
 	font-smoothing()
+	color $secondary
 	color var(--font-color)
 	serif()
 

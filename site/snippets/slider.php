@@ -4,7 +4,7 @@
 		<?php if($image = $image->toFile()): ?>
 		
 			<div class="slide" 
-			data-caption="<?= $image->caption()->kt() ?>"
+			data-caption="<?= $image->caption()->kt()->escape() ?>"
 			>
 			
 				<div class="content image <?= e($image->contain()->bool(), "contain", "fullscreen") ?>">
