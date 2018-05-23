@@ -68,7 +68,8 @@ const App = {
     },
     menuOn: (e) => {
       App.menu.classList.add("is-visible")
-      setTimeout(function() {
+      window.clearTimeout(App.menuTimeout)
+      App.menuTimeout = setTimeout(function() {
         document.body.classList.add("menu-visible")
       }, 1000);
     },
