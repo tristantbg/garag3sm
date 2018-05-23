@@ -21,7 +21,7 @@
 				}
 				?>
 				<div class="ph" style="padding-bottom: <?= number_format(100 / $featured->ratio(), 5, '.', '') ?>%"></div>
-				<img class="lazy lazyload" 
+				<img class="lazy lazyload lazypreload" 
 				data-src="<?= $src ?>" 
 				data-srcset="<?= $srcset ?>" 
 				data-sizes="auto" 

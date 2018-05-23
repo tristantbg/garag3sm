@@ -19,8 +19,7 @@ header
 		height ($font*4)
 		padding $padding 0
 		justify-self center
-		&:not(:hover)
-			pointer-events none
+		pointer-events none
 		svg
 			display block
 			height 100%
@@ -33,7 +32,10 @@ header
 		justify-self start
 	#next-post
 		justify-self end
-		
+
+body.menu-visible
+	header #site-title
+		pointer-events auto
 
 // [page-type="post"], [page-type="product"]
 // 	header

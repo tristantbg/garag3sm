@@ -61,7 +61,7 @@
 				<div class="bold"><?= $item->text()->kt() ?></div>
 				<?php endif ?>
 				<?php if ($item->author()->isNotEmpty()): ?>
-				<div class="author serif condensed upper"><?= $item->author()->html() ?></div>
+				<div class="author serif"><?= $item->author()->html() ?></div>
 				<?php endif ?>
 			</div>
 		<?php endforeach ?>

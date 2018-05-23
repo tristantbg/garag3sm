@@ -68,9 +68,13 @@ const App = {
     },
     menuOn: (e) => {
       App.menu.classList.add("is-visible")
+      setTimeout(function() {
+        document.body.classList.add("menu-visible")
+      }, 300);
     },
     menuOff: (e) => {
       App.menu.classList.remove("is-visible")
+      document.body.classList.remove("menu-visible")
     },
     linkTargets: () => {
       const links = document.querySelectorAll("a");
