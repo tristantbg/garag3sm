@@ -70,7 +70,7 @@ const App = {
       App.menu.classList.add("is-visible")
       setTimeout(function() {
         document.body.classList.add("menu-visible")
-      }, 300);
+      }, 1000);
     },
     menuOff: (e) => {
       App.menu.classList.remove("is-visible")
