@@ -6,20 +6,33 @@ footer#post-sticky
 	padding-top $padding
 	padding-bottom $padding
 	display grid
-	grid-template-columns 2fr 1fr 1fr
+	grid-template-columns 1fr 1fr 1fr
+	text-align center
 	background var(--bg-color)
 	transform translateY(100%) translateZ(0)
 	transition transform 200ms ease
 	border-top 1px solid
+	// box-shadow 0 0 1.1rem alpha($secondary, 0.3)
 	z-index 200
+	+below($md)
+		grid-template-columns 1fr 1fr
 	&.is-visible
 		transform none
-	div.infos
+	div.infos, div.navigation
 		// span(1/2)
+		.sans-serif
+			margin-bottom 0.2em
+	div.navigation
+		span, .sans-serif
+			+below($md)
+				display none
 	div.share-buttons
 		// span(1/3)
+		+below($md)
+			display none
 		ul
-			display inline-flex
+			display flex
+			justify-content center
 			li:not(:last-child)
 				margin-right .5em
 	.close-button

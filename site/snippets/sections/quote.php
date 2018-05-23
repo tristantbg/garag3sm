@@ -3,7 +3,7 @@
 		<?= $data->get("first")->kt() ?>
 	</div>
 	<?php if ($data->get("caption")->isNotEmpty()): ?>
-	<div class="caption">
+	<div class="caption serif">
 		<?= $data->get("caption")->kt() ?>
 	</div>
 	<?php endif ?>

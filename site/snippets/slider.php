@@ -4,10 +4,10 @@
 		<?php if($image = $image->toFile()): ?>
 		
 			<div class="slide" 
-			data-caption="<?= $image->caption()->kt()->escape() ?>"
+			data-caption="<?= $image->caption()->escape() ?>"
 			>
 			
-				<div class="content image <?= e($image->contain()->bool(), "contain", "fullscreen") ?>">
+				<div class="content image <?= $image->contentsize() ?>">
 					<?php 
 					$srcset = '';
 					$src = $image->width(1000)->url();

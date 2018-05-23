@@ -30,6 +30,10 @@ fields:
     type: image
     help: 1200x630px minimum
     width: 1/2
+  shopRocketShopID:
+    label: Shoprocket Shop ID
+    type: text
+    icon: code
   menu:
     label: Menu
     type: structure
@@ -69,3 +73,6 @@ fields:
       author:
         label: Author
         type: text
+      image:
+        label: Image
+        type: image

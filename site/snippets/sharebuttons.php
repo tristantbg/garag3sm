@@ -1,6 +1,6 @@
 <div class="share-buttons">
-		<div class="sans-serif">Share this story:</div>
-		<ul>
+		<div class="sans-serif">Share this article</div>
+		<ul class="serif">
 			<li>
 				<a href="http://www.facebook.com/sharer.php?u=<?= rawurlencode ($page->url()); ?>" target="blank" title="Share on Facebook">
 					Facebook

@@ -87,9 +87,15 @@ a, a:hover, a:visited, a:focus
 .contained
 	padding-left 10%
 	padding-right 10%
+	+below($md)
+		padding-left $padding
+		padding-right $padding
 	&.narrow
 		padding-left 15%
 		padding-right 15%
+		+below($md)
+			padding-left ($padding/2)
+			padding-right ($padding/2)
 
 body.is-loading
 	#page-content

@@ -1,6 +1,7 @@
 title: Product
 files: true
 pages: false
+icon: shopping-basket
 files:
   fields:
     caption:
@@ -12,7 +13,7 @@ files:
     contentsize:
       label: Size
       type: radio
-      default: fullscreen
+      default: contain
       options:
         contain: Contain
         fullscreen: Fullscreen
@@ -51,29 +52,16 @@ fields:
   headInfos:
     label: Main infos
     type: tabs
-  videoToggle:
-    label: Type
-    type: fieldtoggle
-    required: true
-    options:
-      yes: "Video"
-      no: "Normal"
-    show:
-      yes: author
-      no: subtitle
-    hide:
-      yes: subtitle
-      no: author
   title:
     label: Title
     type:  text
+  productID:
+    label: Shoprocket Product ID
+    type: text
+    icon: code
     width: 1/2
   subtitle:
     label: Subtitle
-    type: text
-    width: 1/2
-  author:
-    label: Author
     type: text
     width: 1/2
   featured:
@@ -83,7 +71,7 @@ fields:
     help: Required to display project
     width: 1/2
   date:
-    label: Year
+    label: Date
     type: datetime
     required: true
     date:
@@ -94,7 +82,7 @@ fields:
     width: 1/2
   category:
     label: Category
-    type: radio
+    type: checkboxes
     options: query
     query:
       page: categories
@@ -164,6 +152,11 @@ fields:
         fields:
           first:
             type: images
+      slider:
+        label: Slider
+        fields:
+          first:
+            type: images
       interview:
         label: Interview
         fields:
@@ -180,6 +173,12 @@ fields:
           caption:
             label: Caption
             type: textarea
+      link:
+        label: Link
+        fields:
+          first:
+            label: URL
+            type: url
       embed:
         label: Embed
         fields:

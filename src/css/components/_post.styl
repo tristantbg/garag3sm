@@ -3,6 +3,25 @@
 	margin ($font-heading+$font*2) 0
 	#post-date
 		margin-bottom 1em
+	#post-category
+		text-decoration underline
+		text-decoration-skip ink
+	.title
+		small
+			&::after
+				content '\0000A0'
+			+above($md + 1)
+				font-size 3rem
+				position relative
+				top -0.5em
+				&::after
+					content '\0000A0\0000A0'
+	.serif.condensed
+		small
+			font-size 3rem
+
+.mn-90vh
+	min-height 90vh
 
 #post-hero, #post-description
 	margin-bottom $spacebetween
@@ -16,8 +35,20 @@
 	+above($md + 1)
 		position absolute
 		right 0
+		z-index 10
 	+below($md)
 		stack()
 		margin-top $spacebetween
-	& > *:not(:last-child)
+	#main-caption
+		margin-bottom 3em
+	.additional-caption
 		margin-bottom 1em
+		.sans-serif
+			margin-bottom .2em
+		&:nth-last-child(2)
+			margin-bottom 3em
+	.share-buttons
+		.sans-serif::after
+			content ':'
+			
+		

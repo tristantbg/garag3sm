@@ -1,0 +1,69 @@
+random(min,max)
+  return floor(math(0, 'random')*(max - min + 1) + min)
+
+randomIn(array)
+  return array[floor(math(0, 'random')*(length(array) - 1 + 1) + 0)]
+
+$sizes = 25% 20% 30% 38%
+$sizesLandscape = 23% 26% 33% 45%
+$positions = flex-start center flex-end
+
+#posts
+	display flex
+	margin-top $spacebetween
+	align-items center
+	flex-wrap wrap
+	justify-content center
+	+above($md + 1)
+		justify-content space-around
+		// padding 0 $spacebetween
+	+below($md)
+		padding 0 ($padding/2)
+	.post-item
+		position relative
+		width 33%
+		&:not(:last-child)
+			margin-bottom ($spacebetween*2)
+			+below($md)
+				margin-bottom ($spacebetween)
+		+below($md)
+			column(1/2, $gutter: 2, $cycle: 2)
+			margin 0
+		+above($md + 1)
+			margin-right $spacebetween
+			margin-left $spacebetween
+			for i in (1..30)
+				&:nth-child({i}n)
+					align-self randomIn($positions)
+					width $sizes[i%length($sizes)]
+					if i%2 == 0
+						margin-left random(3%, 10%)
+					else
+						margin-right random(3%, 10%)
+					&.landscape
+						width $sizesLandscape[i%length($sizesLandscape)]
+		img, .post-infos
+			position absolute
+			top 0
+			left 0
+		.post-infos
+			align-items center
+			+above($md + 1)
+				z-index 1
+				width 100%
+				height 100%
+				border 1px solid
+				background $secondary
+				display flex
+				justify-content center
+				&:not(:hover)
+					opacity 0
+			+below($md)
+				position initial
+				margin-top 1em
+			.inner
+				padding $padding
+				text-align center
+				.tiny
+					margin-bottom 0.5em
+		

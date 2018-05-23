@@ -2,6 +2,7 @@ webfont("Sanzettica", "SanzetticaHeavyExpd")
 webfont("ApercuRegular", "ApercuRegular")
 webfont("ApercuBold", "ApercuBold")
 webfont("GeorgiaRegular", "Georgia")
+webfont("Garamond", "ITCGaramondStdLtCond")
 
 $font = 1.8rem
 $font-heading = 7rem
@@ -18,7 +19,13 @@ heading()
 	font-family "Sanzettica", sans-serif
 	
 serif()
-	font-family Georgia, "GeorgiaRegular", serif
+	font-family Georgia, "Georgia", serif
+	letter-spacing -0.01em
+	&.condensed
+		font-family Garamond
+
+serif-condensed()
+	font-family "Georgia", serif
 	letter-spacing -0.01em
 
 sans-serif()
@@ -27,12 +34,14 @@ sans-serif()
 	letter-spacing -0.01em
 	p
 		line-height 1.3
+	&.text
+		line-height 1
 	strong
 		font-family "ApercuBold", Helvetica, sans-serif
 
 link()
-	serif()
-	font-size 2.8rem
+	sans-serif()
+	font-size 3rem
 	padding-left ($font-reading*3)
 
 .serif
@@ -41,21 +50,26 @@ link()
 .sans-serif
 	sans-serif()
 
-
 .title, .heading, .lead, .bold
 	heading()
 
 .title, .heading
 	font-size $font-heading
+	+below($md)
+		font-size 4rem
 
 .text, .post-text
 	font-size $font-reading
 	sans-serif()
+	+below($md)
+		font-size ($font-reading/1.5)
 	p
 		text-indent 3em
 
 .lead
 	font-size $font-lead
+	+below($md)
+		font-size 2.2rem
 
 .caption
 	font-size 1.6rem

@@ -1,6 +1,11 @@
+/* jshint esversion: 6 */
+
 // import smoothState from 'smoothstate';
 import lazysizes from 'lazysizes';
+import optimumx from 'lazysizes';
+require('../../../node_modules/lazysizes/plugins/object-fit/ls.object-fit.js');
 import Flickity from 'flickity';
+import InfiniteScroll from 'infinite-scroll';
 import throttle from 'lodash.throttle';
 import moment from 'moment';
 import tz from 'moment-timezone';
@@ -20,7 +25,7 @@ const App = {
     App.interact.init();
     setTimeout(function() {
       document.getElementById("loader").style.display = "none"
-    }, 300);
+    }, 0);
 
   },
   interact: {
@@ -32,15 +37,34 @@ const App = {
       App.interact.timeClock()
       App.interact.loadBoard()
       App.interact.postStickyPosition()
+      App.interact.infiniteScroll()
     },
     eventTargets: () => {
       App.header.addEventListener('mouseenter', function() {
         App.boardSlider.next()
       });
-      App.siteTitle.addEventListener('mouseenter', App.interact.menuOn);
-      App.siteTitle.addEventListener('mouseleave', App.interact.menuOff);
+      App.header.addEventListener('mouseenter', App.interact.menuOn);
+      App.header.addEventListener('mouseleave', App.interact.menuOff);
       App.menu.addEventListener('mouseenter', App.interact.menuOn);
       App.menu.addEventListener('mouseleave', App.interact.menuOff);
+    },
+    infiniteScroll: () => {
+      const container = document.getElementById('posts');
+      const pagination = document.getElementById('pagination');
+
+      if (container && pagination) {
+        App.infScroll = new InfiniteScroll(container, {
+          path: '#pagination .next',
+          append: '.post-item',
+          history: 'replace',
+          hideNav: "#pagination",
+          scrollThreshold: 1000,
+          // status: '.ajax-loading',
+          debug: false
+        });
+      } else {
+        App.infScroll = null;
+      }
     },
     menuOn: (e) => {
       App.menu.classList.add("is-visible")
@@ -49,13 +73,15 @@ const App = {
       App.menu.classList.remove("is-visible")
     },
     linkTargets: () => {
-      document.querySelectorAll("a").forEach(function(element, index) {
+      const links = document.querySelectorAll("a");
+      for (var i = 0; i < links.length; i++) {
+        const element = links[i];
         if (element.host !== window.location.host) {
           element.setAttribute('target', '_blank');
         } else {
           element.setAttribute('target', '_self');
         }
-      });
+      }
     },
     embedKirby: () => {
       var pluginEmbedLoadLazyVideo = function() {
@@ -86,8 +112,8 @@ const App = {
           cellSelector: '.slide',
           imagesLoaded: true,
           lazyLoad: 1,
-          setGallerySize: true,
-          adaptiveHeight: true,
+          setGallerySize: false,
+          adaptiveHeight: false,
           percentPosition: true,
           accessibility: true,
           wrapAround: true,
@@ -98,7 +124,7 @@ const App = {
         });
         slider.slidesCount = slider.slides.length;
         if (slider.slidesCount < 1) return; // Stop if no slides
-        slider.on('select', function() {
+        slider.on('change', function() {
           // $('#slide-number').html((slider.selectedIndex + 1) + '/' + slider.slidesCount);
           if (this.selectedElement) {
             this.element.parentNode.querySelector(".caption").innerHTML = this.selectedElement.getAttribute("data-caption");
@@ -112,12 +138,26 @@ const App = {
           }
         });
         slider.on('staticClick', function(event, pointer, cellElement, cellIndex) {
-          if (!cellElement || cellElement.getAttribute('data-media') == "video" && !slider.element.classList.contains('nav-hover')) {
+          if (!cellElement || !Modernizr.touchevents || cellElement.getAttribute('data-media') == "video") {
             return;
           } else {
             this.next();
           }
         });
+        let prevNextButtons = slider.element.querySelectorAll(".flickity-prev-next-button");
+        for (var i = 0; i < prevNextButtons.length; i++) {
+          const el = prevNextButtons[i];
+          let cursor = document.createElement('div');
+          cursor.className = "cursor";
+          el.appendChild(cursor);
+          el.addEventListener('mousemove', () => {
+            if (!Modernizr.touchevents) {
+              let rect = el.getBoundingClientRect();
+              cursor.style.top = event.pageY - rect.top - window.scrollY + "px";
+              cursor.style.left = event.pageX - rect.left - window.scrollX + "px";
+            }
+          });
+        }
         if (slider.selectedElement) {
           slider.element.parentNode.querySelector(".caption").innerHTML = slider.selectedElement.getAttribute("data-caption");
         }

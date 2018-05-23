@@ -10,6 +10,19 @@ page::$methods['hasHero'] = function($page) {
   return $page->heroVideoUrl()->isNotEmpty() || $page->heroImages()->isNotEmpty();
 };
 
+page::$methods['headerTitle'] = function($page) {
+	if ($page->videoToggle()->bool()) {
+		$title = $page->title()->html();
+		if($page->author()->isNotEmpty()) {
+			$subtitle = $page->author()->html();
+			$title .= ' by '.$subtitle;
+		}
+	} else {
+		$title = $page->title()->html();
+	}
+	return $title;
+};
+
 // Default fields values
 kirby()->hook('panel.page.create', function($page) {
   if(in_array($page->intendedTemplate(), ['post', 'product'])) {

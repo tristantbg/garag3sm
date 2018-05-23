@@ -16,7 +16,7 @@ return function ($site, $pages, $page) {
 	}
 	
 	$date = $page->date("d.m.Y");
-	
+
 	$categories = $page->category()->split(',');
 	$categoriesOutput = '';
 	foreach ($categories as $key => $c) {

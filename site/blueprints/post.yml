@@ -12,7 +12,7 @@ files:
     contentsize:
       label: Size
       type: radio
-      default: fullscreen
+      default: contain
       options:
         contain: Contain
         fullscreen: Fullscreen
@@ -94,7 +94,7 @@ fields:
     width: 1/2
   category:
     label: Category
-    type: radio
+    type: checkboxes
     options: query
     query:
       page: categories

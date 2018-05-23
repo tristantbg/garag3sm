@@ -9,29 +9,29 @@ const modernizrConfig = {
     'setClasses'
   ],
   'feature-detects': [
-    "emoji",
-    "history",
+    // "emoji",
+    // "history",
     "touchevents",
-    "video",
-    "webgl",
+    // "video",
+    // "webgl",
     "css/animations",
-    "css/backgroundblendmode",
-    "css/columns",
-    "css/filters",
+    // "css/backgroundblendmode",
+    // "css/columns",
+    // "css/filters",
     "css/flexbox",
-    "css/hyphens",
-    "css/mask",
+    // "css/hyphens",
+    // "css/mask",
     "css/positionsticky",
-    "css/scrollbars",
+    // "css/scrollbars",
     "css/transforms",
     "css/transforms3d",
     "css/transitions",
-    "css/vhunit",
-    "css/vwunit",
-    "img/srcset",
-    "img/webp",
-    "storage/localstorage",
-    "storage/sessionstorage"
+    // "css/vhunit",
+    // "css/vwunit",
+    // "img/srcset",
+    // "img/webp",
+    // "storage/localstorage",
+    // "storage/sessionstorage"
   ],
   minify: {
     output: {
@@ -54,18 +54,25 @@ const config = {
     filename: 'app.min.js'
   },
   plugins: [
-    new UglifyJsPlugin(),
+    new UglifyJsPlugin({
+      uglifyOptions: {
+        output: {
+          comments: false
+        }
+      }
+    }),
     new ModernizrWebpackPlugin(modernizrConfig)
   ],
   module: {
-    loaders: [
+    rules: [
       {
         test: /\.js$/,
-        exclude: /node_modules/,
-        loader: 'babel-loader',
-        query: {
-          presets: ['babel-preset-env'].map(require.resolve),
-          sourceMaps: 'inline'
+        exclude: /(node_modules|bower_components)/,
+        use: {
+          loader: 'babel-loader',
+          options: {
+            presets: ['@babel/preset-env']
+          }
         }
       }
     ]

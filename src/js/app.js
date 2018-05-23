@@ -221,7 +221,7 @@ var app = {
             $body.removeClass('is-loading');
           // Clear cache for random content
           // smoothState.clear();
-          }, 200);
+          }, 0);
         }
       },
       smoothState = $(container).smoothState(options).data('smoothState');

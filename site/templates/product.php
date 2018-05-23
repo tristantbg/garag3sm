@@ -12,6 +12,11 @@
 		<div id="post-description" class="row">
 			<div class="align-left post-text"><?= $page->text()->kt() ?></div>
 			<div id="post-captions" class="caption">
+				<?php if ($page->productID()->isNotEmpty()): ?>
+				<div class="add-to-basket sans-serif upper">
+					<a class="sr-add" href="javascript:sraddtocheckout(<?= $page->productID() ?>);">Buy this product</a>
+				</div>
+				<?php endif ?>
 				<?php if ($page->caption()->isNotEmpty()): ?>
 					<div id="main-caption" class="sans-serif">
 						<?= $page->caption()->kt() ?>

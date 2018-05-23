@@ -1,10 +1,11 @@
 .section--image
 	.section--image--content
 		position relative
-		max-width 30vw
 		margin 0 auto
-		&.landscape
-			max-width 40vw
+		+above($md + 1)
+			max-width 30vw
+			&.landscape
+				max-width 40vw
 		img
 			position absolute
 			display block

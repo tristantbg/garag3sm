@@ -1,0 +1,30 @@
+.sr-modal
+	*
+		color $secondary !important
+	*:not(.fa):not(h3):not(.sr-btn)
+		font-family "ApercuRegular" !important
+		font-size $font
+		color $secondary !important
+	.fa.fa-times
+		font-size 19px !important
+		&.sr-secondary-font.sr-close-select
+			margin-top -10px !important
+	.sr-modal-header, .sr-modal-footer
+		background $primary !important
+		border-color $secondary !important
+	h3, .sr-btn, .sr-field-value
+		font-size $font !important
+		color $secondary !important
+		font-family "ApercuRegular" !important
+		text-transform uppercase
+		// font-family "Garamond", serif !important
+		// letter-spacing -0.01em !important
+		font-weight normal !important
+	.sr-popover.sr-popover-holder
+		color $secondary !important
+
+.sr-modal-backdrop
+	background alpha($secondary, 0.85) !important
+
+#sr-basket-widget:not(.sr-no-style)
+	display none
