@@ -102,6 +102,20 @@ fields:
       text: "{{title}}"
       value: "{{uid}}"
     required: true
+    columns: 2
+    width: 3/4
+  size:
+    label: Grid size
+    type: radio
+    default: random
+    options:
+      random: Random
+      small: Small
+      medium: Medium
+      large: Large
+      xl: XL
+    columns: 1
+    width: 1/4
   text:
     label: Description
     type: simplemde

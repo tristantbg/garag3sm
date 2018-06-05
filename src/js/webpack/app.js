@@ -22,11 +22,24 @@ const App = {
     App.header = document.querySelector("header")
     App.siteTitle = document.querySelector("#site-title")
     App.menu = document.getElementById("menu")
+    App.sizeSet();
     App.interact.init();
     setTimeout(function() {
       document.getElementById("loader").style.display = "none"
     }, 0);
 
+  },
+  sizeSet: () => {
+    App.width = (window.innerWidth || document.documentElement.clientWidth);
+    App.height = (window.innerHeight || document.documentElement.clientHeight);
+    if (App.width <= 1024)
+      App.isMobile = true;
+    if (App.isMobile) {
+      if (App.width >= 1024) {
+        // location.reload();
+        App.isMobile = false;
+      }
+    }
   },
   interact: {
     init: () => {
@@ -56,7 +69,7 @@ const App = {
         App.infScroll = new InfiniteScroll(container, {
           path: '#pagination .next',
           append: '.post-item',
-          history: 'replace',
+          history: false,
           hideNav: "#pagination",
           scrollThreshold: 1000,
           // status: '.ajax-loading',
@@ -68,10 +81,7 @@ const App = {
     },
     menuOn: (e) => {
       App.menu.classList.add("is-visible")
-      window.clearTimeout(App.menuTimeout)
-      App.menuTimeout = setTimeout(function() {
-        document.body.classList.add("menu-visible")
-      }, 1000);
+      document.body.classList.add("menu-visible")
     },
     menuOff: (e) => {
       App.menu.classList.remove("is-visible")
@@ -117,14 +127,14 @@ const App = {
           cellSelector: '.slide',
           imagesLoaded: true,
           lazyLoad: 1,
-          setGallerySize: false,
-          adaptiveHeight: false,
+          setGallerySize: App.isMobile ? true : false,
+          adaptiveHeight: App.isMobile ? true : false,
           percentPosition: true,
           accessibility: true,
           wrapAround: true,
           prevNextButtons: !Modernizr.touchevents,
           pageDots: false,
-          draggable: Modernizr.touchevents,
+          draggable: '>1',
           dragThreshold: 30
         });
         slider.slidesCount = slider.slides.length;

@@ -10,7 +10,6 @@
 <div class="row mn-90vh">
 	<div class="row contained">
 		<div id="post-description" class="row">
-			<div class="align-left post-text"><?= $page->text()->kt() ?></div>
 			<div id="post-captions" class="caption">
 				<?php if ($page->caption()->isNotEmpty()): ?>
 					<div id="main-caption" class="sans-serif">
@@ -31,6 +30,7 @@
 				<?php endforeach ?>
 				<?php snippet('sharebuttons') ?>
 			</div>
+			<div class="align-left post-text"><?= $page->text()->kt() ?></div>
 		</div>
 	</div>
 	

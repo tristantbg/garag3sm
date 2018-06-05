@@ -1,11 +1,14 @@
 <?php snippet('header') ?>
 
+<?php $sizes = ['small', 'medium', 'large', 'xl'] ?>
+<?php $pos = ['top', 'middle', 'bottom'] ?>
+
 <div id="posts">
 	<?php foreach ($posts as $key => $post): ?>
 	
 		<?php if($post->featured()->isNotEmpty() && $featured = $post->featured()->toFile()): ?>
 	
-			<a class="post-item <?= $featured->orientation() ?>" href="<?= $post->url() ?>" data-target>
+			<a class="post-item <?= $featured->orientation() ?> <?= $pos[array_rand($pos)] ?> <?= e($post->size()->empty() || $post->size() == 'random', $sizes[array_rand($sizes)], $post->size()) ?>" href="<?= $post->url() ?>" data-target>
 				<?php 
 				$srcset = '';
 				$src = $featured->width(1000)->url();

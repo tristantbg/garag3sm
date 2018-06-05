@@ -20,6 +20,11 @@ footer#post-sticky
 		transform none
 	div.infos, div.navigation
 		// span(1/2)
+		+below($md)
+			display flex
+			justify-content center
+			align-items center
+			flex-direction column
 		.sans-serif
 			margin-bottom 0.2em
 	div.navigation

@@ -3,7 +3,7 @@
   "description": "",
   "private": true,
   "scripts": {
-    "build": "webpack --config ./webpack.config.js --progress",
+    "build": "webpack --mode=production --config ./webpack.config.js --progress",
     "start": "webpack --config ./webpack.config.js --watch --watch-poll -d --progress"
   },
   "browserslist": [

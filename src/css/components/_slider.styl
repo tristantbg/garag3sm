@@ -8,20 +8,26 @@
 		// transform none !important
 	.slide
 		width 100%
-		height 100%
+		+above($md+1)
+			height 100%
 		.content
 			width 100%
-			height 100%
+			+above($md+1)
+				height 100%
 			img, video
 				display block
 				width 100%
-				height 100%
-				object-fit contain
-				font-family "object-fit: contain"
+				height auto
+				+above($md+1)
+					height 100%
+					object-fit contain
+					font-family "object-fit: contain"
 			&.fullscreen
-				img, video
-					object-fit cover
-					font-family "object-fit: cover"
+				+above($md+1)
+					img, video
+						height 100%
+						object-fit cover
+						font-family "object-fit: cover"
 			&.video
 				.plyr--ready
 					width 100%

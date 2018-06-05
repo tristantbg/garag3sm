@@ -28,6 +28,9 @@
 
 #post-description
 	position relative
+	.post-text
+		+below($md)
+			margin-top $spacebetween
 
 #post-captions
 	span(2/12)
@@ -38,7 +41,6 @@
 		z-index 10
 	+below($md)
 		stack()
-		margin-top $spacebetween
 	#main-caption
 		margin-bottom 3em
 	.additional-caption
@@ -50,5 +52,4 @@
 	.share-buttons
 		.sans-serif::after
 			content ':'
-			
 		
