@@ -19,6 +19,7 @@ const App = {
   initialize: () => {
     // App.$body = $('body');
     // App.smoothState('#main');
+    console.log('Code by Tristan Bagot', 'www.tristanbagot.com')
     App.header = document.querySelector("header")
     App.siteTitle = document.querySelector("#site-title")
     App.menu = document.getElementById("menu")

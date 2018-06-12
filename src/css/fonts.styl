@@ -10,7 +10,10 @@ $font-lead = 4.2rem
 $font-reading = 2.4rem
 
 html
-	font-size 9px
+	+below($xxl)
+		font-size 9px
+	+above($xxl + 1)
+		font-size 0.65vw
 
 body
 	font-size $font
@@ -65,7 +68,7 @@ link()
 	font-size $font-reading
 	sans-serif()
 	+below($md)
-		font-size ($font-reading/1.5)
+		font-size 1.8rem
 	p
 		text-indent 3em
 

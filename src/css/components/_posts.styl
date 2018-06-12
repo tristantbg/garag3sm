@@ -10,6 +10,7 @@ $positions = flex-start center flex-end
 
 #posts
 	hideselect()
+	span(1)
 	margin-top $spacebetween
 	+above($md + 1)
 		display flex
@@ -19,13 +20,15 @@ $positions = flex-start center flex-end
 		// padding 0 $spacebetween
 	+below($md)
 		padding 0 ($padding/2)
+		margin-top ($padding/2)
 	.post-item
 		position relative
 		width 33%
 		&:not(:last-child)
-			margin-bottom ($spacebetween*2)
 			+below($md)
 				margin-bottom ($spacebetween)
+			+above($md + 1)
+				margin-bottom 6vw
 		+below($md)
 			column(1/2, $gutter: 3, $cycle:2)
 		+below($sm)
@@ -43,8 +46,12 @@ $positions = flex-start center flex-end
 				align-self flex-end
 			&.small
 				width 15%
+				+above($xl)
+					width 35%
 			&.medium
 				width 25%
+				+above($xl)
+					width 40%
 			&.large
 				width 35%
 			&.xl
