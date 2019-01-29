@@ -136,7 +136,7 @@ const App = {
           prevNextButtons: !Modernizr.touchevents,
           pageDots: false,
           draggable: '>1',
-          dragThreshold: 30
+          dragThreshold: 60
         });
         slider.slidesCount = slider.slides.length;
         if (slider.slidesCount < 1) return; // Stop if no slides

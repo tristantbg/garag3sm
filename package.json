@@ -34,7 +34,7 @@
     "webpack-cli": "^2.0.11"
   },
   "dependencies": {
-    "flickity": "^2.1.1",
+    "flickity": "^2.1.2",
     "hammerjs": "^2.0.8",
     "infinite-scroll": "^3.0.4",
     "jquery": "^3.3.1",

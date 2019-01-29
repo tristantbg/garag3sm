@@ -2983,9 +2983,9 @@ fizzy-ui-utils@^2.0.0, fizzy-ui-utils@^2.0.5:
   dependencies:
     desandro-matches-selector "^2.0.0"
 
-flickity@^2.1.1:
-  version "2.1.1"
-  resolved "https://registry.yarnpkg.com/flickity/-/flickity-2.1.1.tgz#1c35ef78bfa4d06a033759743f12d614181ad29a"
+flickity@^2.1.2:
+  version "2.1.2"
+  resolved "https://registry.yarnpkg.com/flickity/-/flickity-2.1.2.tgz#f1be68a75c8d8d8d6df68fb2a49f358268279bd0"
   dependencies:
     desandro-matches-selector "^2.0.0"
     ev-emitter "^1.0.2"

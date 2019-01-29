@@ -59,7 +59,11 @@ fields:
     label: Shoprocket Product ID
     type: text
     icon: code
-    width: 1/2
+    width: 1/4
+  productUrl:
+    label: Product URL
+    type: url
+    width: 1/4
   subtitle:
     label: Subtitle
     type: text

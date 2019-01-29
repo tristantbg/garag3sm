@@ -1,6 +1,10 @@
 <footer id="post-sticky" class="contained caption">
 	<?php snippet('sharebuttons') ?>
-	<?php if ($page->intendedTemplate() == 'product' && $page->productID()->isNotEmpty()): ?>
+	<?php if ($page->productUrl()->isNotEmpty()): ?>
+		<div class="add-to-basket sans-serif upper">
+			<a href="<?= $page->productUrl() ?>">Buy this product</a>
+		</div>
+	<?php elseif ($page->intendedTemplate() == 'product' && $page->productID()->isNotEmpty()): ?>
 		<div class="add-to-basket sans-serif upper">
 			<a class="sr-add" href="javascript:sraddtocheckout(<?= $page->productID() ?>);">Buy this product</a>
 		</div>
