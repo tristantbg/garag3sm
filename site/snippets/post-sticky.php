@@ -17,7 +17,7 @@
 			<div class="serif"><?= $subtitle ?></div>
 		<?php endif ?>
 	</div>
-	<?php if ($page->intendedTemplate() != 'product' || $page->productID()->empty()): ?>
+	<?php if ($page->intendedTemplate() != 'product' || $page->productID()->empty() && $page->productUrl()->empty()): ?>
 	<div class="navigation">
 		<div class="sans-serif">
 			Navigation
